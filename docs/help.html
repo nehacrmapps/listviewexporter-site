@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Help Documentation | List View Export for Salesforce</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/crmapps.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/crmapps.png"
+    />
+    <link rel="shortcut icon" href="../assets/crmapps.png" />
+    <link rel="apple-touch-icon" href="../assets/crmapps.png" />
+    <meta name="theme-color" content="#1589ee" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .docs-content {
+        padding: 80px 20px 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .docs-section {
+        margin-bottom: 40px;
+        padding: 0 20px;
+      }
+      .docs-section h1 {
+        color: #1589ee;
+        margin: 40px 0 30px 0;
+        font-size: 2.5em;
+        line-height: 1.4;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      .docs-section > p {
+        font-size: 1.1em;
+        line-height: 1.6;
+        color: #333;
+        margin-bottom: 30px;
+      }
+      .step-list {
+        list-style: none;
+        padding: 0;
+        margin: 30px 0;
+      }
+      .step-list li {
+        margin-bottom: 30px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .step-list li h3 {
+        color: #1589ee;
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      .step-list li p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        font-size: 1.1em;
+        color: #333;
+      }
+      .step-list ol {
+        padding-left: 20px;
+        margin: 20px 0;
+      }
+      .step-list ol li {
+        margin-bottom: 15px;
+        padding: 0;
+        background: none;
+        box-shadow: none;
+        line-height: 1.6;
+        font-size: 1.1em;
+      }
+      .code-block {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 25px;
+        border-radius: 8px;
+        margin: 20px 0;
+        font-family: "Monaco", "Consolas", monospace;
+        overflow-x: auto;
+        position: relative;
+      }
+      .code-block pre {
+        margin: 0;
+      }
+      .code-block code {
+        color: inherit;
+        padding: 0;
+        background: none;
+        font-size: 1.1em;
+      }
+      .code-example {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #3e3e3e;
+      }
+      .code-example::before {
+        content: "Example: Account Object";
+        color: #569cd6;
+        display: block;
+        margin-bottom: 10px;
+        font-size: 0.9em;
+      }
+      .code-comment {
+        color: #6a9955;
+      }
+      code {
+        color: #1589ee;
+        font-family: "Monaco", "Consolas", monospace;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-size: 0.95em;
+      }
+      @media (max-width: 768px) {
+        .docs-section {
+          padding: 0 15px;
+        }
+        .docs-section h1 {
+          font-size: 2em;
+          margin: 30px 0 20px 0;
+        }
+        .step-list li {
+          padding: 20px;
+        }
+        .step-list li h3 {
+          font-size: 1.3em;
+        }
+      }
+      .docs-image {
+        margin: 25px auto;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 80%;
+        height: auto;
+      }
+      .docs-image img {
+        width: 100%;
+        border-radius: 8px;
+        display: block;
+      }
+      .docs-image-caption {
+        text-align: center;
+        color: #666;
+        font-size: 0.9em;
+        margin-top: 10px;
+      }
+      @media (max-width: 768px) {
+        .docs-image {
+          width: 100%;
+        }
+      }
+      .config-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+      }
+      .config-item {
+        background: #f8f9fa;
+        margin: 10px 0;
+        padding: 12px 16px;
+        border-radius: 6px;
+        display: flex;
+        align-items: baseline;
+      }
+      .config-label {
+        font-weight: 600;
+        color: #1589ee;
+        min-width: 160px;
+        margin-right: 15px;
+      }
+      .config-value {
+        color: #333;
+        font-family: "Monaco", "Consolas", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">
+          <img src="../assets/list2csv.png" alt="" class="app-logo" />
+          <span class="app-name">List View Exporter</span>
+        </div>
+        <div class="nav-links">
+          <a href="../index.html#features">Features</a>
+          <a href="../index.html#how-it-works">How It Works</a>
+          <a href="../index.html#faq">FAQ</a>
+          <a
+            target="_blank"
+            href="https://appexchange.salesforce.com/appxListingDetail?listingId=4d1e2eff-90d9-4fe5-8707-ae246e8b22c1"
+            class="cta-button"
+            >Install Now</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <section class="docs-content">
+      <div class="container">
+        <div class="docs-section">
+          <h1>Enabling List View Export for an Object</h1>
+          <p>
+            Follow these steps to enable list view export functionality for any
+            Salesforce object.
+          </p>
+
+          <ul class="step-list">
+            <li>
+              <h3>Step 1: Create a Visualforce Page</h3>
+              <p>
+                First, you need to create a Visualforce page for your object.
+                This page will serve as the container for the list view export
+                functionality.
+              </p>
+              <ol>
+                <li>Navigate to Setup → Custom Code → Visualforce Pages</li>
+                <li>Click "New" to create a new Visualforce page</li>
+                <li>
+                  Name your page using the format:
+                  <code>ListViewExport_[ObjectName]</code>. For Example:
+                  <code>ListViewExport_Account</code>
+                </li>
+                <li>Use the following code template:</li>
+              </ol>
+              <div class="code-block">
+                <pre><code><span class="code-comment"><!-- Generic Template --></span>
+&lt;apex:page standardController="[objectApiName]" extensions="listviewexport.ListViewExportController" 
+           recordSetVar="records" showHeader="false" sidebar="false"&gt;
+    &lt;listviewexport:ListViewExport objectName="[objectApiName]" listViewId="{!listViewId}" /&gt;
+&lt;/apex:page&gt;</code></pre>
+                <div class="code-example">
+                  <pre><code><span class="code-comment"><!-- Example for Account object --></span>
+&lt;apex:page standardController="Account" extensions="listviewexport.ListViewExportController" 
+           recordSetVar="records" showHeader="false" sidebar="false"&gt;
+    &lt;listviewexport:ListViewExport objectName="Account" listViewId="{!listViewId}" /&gt;
+&lt;/apex:page&gt;</code></pre>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <h3>Step 2: Assign Visualforce Page to Permission Set</h3>
+              <p>
+                After creating the Visualforce page, you need to assign it to
+                the "List View Export" permission set to grant access to users.
+              </p>
+              <ol>
+                <li>Go to Setup → Permission Sets</li>
+                <li>Click on the "List View Export" permission set</li>
+                <li>
+                  Under the "Apps" section, click "Visualforce Page Access"
+                </li>
+                <li>Click "Edit"</li>
+                <li>
+                  Move your newly created Visualforce page from "Available
+                  Visualforce Pages" to "Enabled Visualforce Pages"
+                </li>
+                <li>Click "Save"</li>
+              </ol>
+              <div class="docs-image">
+                <img
+                  src="../assets/docs-step2.png"
+                  alt="Assigning Visualforce Page to Permission Set"
+                />
+                <div class="docs-image-caption">
+                  Assigning the Visualforce page to the List View Export
+                  permission set
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <h3>Step 3: Create List View Button</h3>
+              <p>
+                Create a custom list view button that will trigger the export
+                functionality.
+              </p>
+              <ol>
+                <li>
+                  Go to Setup → Object Manager → [Your Object] → Buttons, Links,
+                  and Actions
+                </li>
+                <li>Click "New Button or Link"</li>
+                <li>Configure the button with these settings:</li>
+              </ol>
+              <div class="config-list">
+                <div class="config-item">
+                  <span class="config-label">Label:</span>
+                  <span class="config-value">"Export to CSV"</span>
+                </div>
+                <div class="config-item">
+                  <span class="config-label">Name:</span>
+                  <span class="config-value">"Export_to_CSV"</span>
+                </div>
+                <div class="config-item">
+                  <span class="config-label">Display Type:</span>
+                  <span class="config-value">"List Button"</span>
+                </div>
+                <div class="config-item">
+                  <span class="config-label">Behavior:</span>
+                  <span class="config-value"
+                    >"Display in existing window without sidebar or
+                    header"</span
+                  >
+                </div>
+                <div class="config-item">
+                  <span class="config-label">Content Source:</span>
+                  <span class="config-value">"Visualforce Page"</span>
+                </div>
+                <div class="config-item">
+                  <span class="config-label">Content:</span>
+                  <span class="config-value"
+                    >Select the Visualforce page you created in Step 1</span
+                  >
+                </div>
+              </div>
+              <ol start="4">
+                <li>Click "Save"</li>
+              </ol>
+              <div class="docs-image">
+                <img
+                  src="../assets/docs-step3.png"
+                  alt="Configuring List View Button"
+                />
+                <div class="docs-image-caption">
+                  Configuring the Export to CSV list view button
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <h3>Step 4: Add to List View Layout</h3>
+              <p>
+                Finally, add the newly created button to your object's list view
+                button layout.
+              </p>
+              <ol>
+                <li>
+                  Go to Setup → Object Manager → [Your Object] → List View
+                  Button Layout
+                </li>
+                <li>Click "Edit" to modify the button layout</li>
+                <li>
+                  Move "Export to CSV" from Available Buttons to Selected
+                  Buttons section
+                </li>
+                <li>
+                  Arrange the button position using the Up/Down arrows if needed
+                </li>
+                <li>Click "Save"</li>
+              </ol>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="company-info">
+              <div class="company-brand">
+                <img src="../assets/crmapps.png" alt="" class="company-logo" />
+                <h4>CRM Apps</h4>
+              </div>
+              <p>Simplifying Salesforce for everyone</p>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <a href="../index.html#features">Features</a>
+            <a href="../index.html#how-it-works">How It Works</a>
+            <a href="../index.html#faq">FAQ</a>
+          </div>
+          <div class="footer-section">
+            <h4>Support</h4>
+            <a href="mailto:support@listviewexport.com">Email Support</a>
+            <a href="installation.html">Documentation</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 List View Export. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>
